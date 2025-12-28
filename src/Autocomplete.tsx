@@ -2,15 +2,15 @@ import { useMemo, useRef, useState } from 'react';
 import { Person } from './types/Person';
 
 export const Autocomplete = ({
-  delay,
   peopleFromServer,
+  delay = 300,
   onSelected,
-  handleInputNotify,
+  onInputChange,
 }: {
   peopleFromServer: Person[];
   delay: number;
   onSelected: (person: Person) => void;
-  handleInputNotify: (value: string) => void;
+  onInputChange: (value: string) => void;
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -18,7 +18,7 @@ export const Autocomplete = ({
   const timerId = useRef(0);
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
-    handleInputNotify(e.target.value);
+    onInputChange(e.target.value);
 
     window.clearTimeout(timerId.current);
 

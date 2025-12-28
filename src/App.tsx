@@ -26,7 +26,7 @@ export const App: React.FC = () => {
           delay={delay}
           peopleFromServer={peopleFromServer}
           onSelected={handleSelected}
-          handleInputNotify={handleInputNotify}
+          onInputChange={handleInputNotify}
         />
       </main>
     </div>
